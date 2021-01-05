@@ -1,0 +1,83 @@
+/* Defaults */
+body { font-family: Arial, "Trebuchet MS", sans-serif; font-size: 8pt; color: #000; }
+h1 { font-size: 12pt; margin: 0; }
+h2, h3, h4 { font-family: "Trebuchet MS", arial, serif; font-weight: bold; }
+h3 a { text-decoration: none; }
+#header h1 { margin-bottom: 5px; }
+
+/* Tool Tip */
+.tip { padding: 10px; font-size: 9pt; margin-bottom: 6px; color: #000; font-weight: bold; }
+.tip-top { padding: 0; padding-right: 3px; }
+/* Misc Formatting */
+.align-center{ text-align: center; }
+.align-right { text-align: right; }
+.align-left { text-align: left; }
+.align-bottom { vertical-align: bottom; }
+.align-top { vertical-align: top; }
+.actions { width: 100px; text-align: center; }
+.header { font-weight: bold; border: 1px solid #000; background: #CCC; padding: 5px; margin: 4px 0; }
+.misc { display: block; clear: both; font-weight: bold; color: #4b4e15; margin: 0 0 0 30px; border-bottom: 1px solid #4b4e15; }
+.full { margin: 0; }
+.note { background: #fcfedc; border: 1px solid #bbbf7f; margin-bottom: 4px; padding-left: 5px; }
+.section { display: block; }
+.left, .right { float: left; display: block; margin-right: 30px; width: 45%; clear: none; }
+.right { margin-right: 0; }
+.note-img { vertical-align: middle; }
+.normal { font-weight: normal; }
+.float-left { float: left; clear: none; }
+.hidden { display: none; }
+.bold { font-weight: bold };
+.spacer{ width: 50px; }
+.space { width: 2px; font-size: 2pt; }
+.small { font-size: 8pt; }
+table.results tr td.align-center, table.results tr th.align-center { text-align: center; }
+
+/* Tables */
+table { width: 100%; }
+table tr td.actions { text-align: center; }
+th { text-align: center; font-size: 9pt; }
+table tr td { border: 0; }
+form { display: block; height: auto;  }
+th.id, td.id { width: 5px; }
+td.left-column { width: 180px; }
+td.resident { width: 200px; }
+table.adl tr td { background: #FFF; }
+table.adl tr td.header { font-weight: bold; border: 1px solid #000; background: #CCC; padding: 5px; margin: 4px 0; }
+td.border-bottom { border-bottom: 1px solid #000; }
+table.adl tr td.header-top { font-weight: bold; background: #CCC; width: 125px; border: 1px solid #000; border-right: 0; font-size: 110%; text-align: center; }
+table.adl tr td.border-right { border-right: 1px solid #000; }
+table.adl tr td.border-left { border-left: 1px solid #000; }
+table.adl tr.border-bottom td { border-bottom: 1px solid #000; }
+th.clock { background: #555; }
+th.clock a { color: #EAF1F2; }
+table.results tr.today td { background: #fb9a9a }
+
+/* List Table */
+ul.table { display: table; margin: 0 3px 0 3px; }
+ul.table li { display: table-cell; font-size: 12px;  list-style-type: none; padding: 5px 5px 5px 0; text-align: left; }
+ul.table li.field { font-weight: bold; padding-right: 20px; width: 90px; }
+
+/** Forms **/
+form { clear: both; padding: 0; width: 100%; }
+fieldset { border: 1px solid #000; margin-bottom: 1em; padding: 16px 20px; }
+fieldset legend { background:#fff; color: #000; font-size: 160%; font-weight: bold; }
+fieldset fieldset { margin-top: 0px; margin-bottom: 20px; padding: 16px 10px; }
+fieldset fieldset legend { font-size: 120%; font-weight: normal; }
+fieldset fieldset div { clear: left; margin: 0 20px; }
+form div { margin-bottom: 1em; padding: .5em; vertical-align: text-top; }
+form .input { color: #000; } 
+form .error label { color: #FF0000; }
+form .error label:after { color: #e32; content: '*'; display:inline; font-weight: bold; }
+form div.submit { border: 0; clear: both; margin-top: 10px; }
+label { display: block; margin-bottom:3px; }
+div.checkbox label { display: inline;  }
+div.radio label { margin: 0 0 6px 20px; }
+div.checkbox {   margin-top: 5px; }
+form div { margin: 0; padding-left: 0; }
+label { font-weight: bold; }
+select { font-size: 8pt; }
+fieldset { border: 0; padding: 0; margin: 0}
+fieldset legend { width: 50%; word-wrap:break-word; color: #000; font-size: 8pt; }
+input[type=hidden] { display: none; }
+input, select { border: 1px solid #000; }
+

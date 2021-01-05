@@ -1,0 +1,1 @@
+<?php echo $this->element('_rug_report'); ?>

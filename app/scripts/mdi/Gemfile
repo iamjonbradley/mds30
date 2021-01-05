@@ -1,0 +1,7 @@
+source 'http://rubygems.org'
+
+gem 'mysql2'
+gem 'activerecord'
+gem 'activerecord-mysql2-adapter'
+gem 'activerecord-sqlserver-adapter'
+gem 'tiny_tds'

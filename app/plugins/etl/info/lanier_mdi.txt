@@ -1,0 +1,6 @@
+[backups]
+path:     /backups/MIL/lanier/data/apps/mdi_bak/
+hostname: 10.200.12.60
+username: root
+password: 6491SunsetGhetto
+filename: SQL_MIL0808TS_{3 letter day}.rar

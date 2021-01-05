@@ -1,0 +1,80 @@
+<h2>Assessment Totals</h2>
+<style type="text/css">
+  .results { width: 98%; }
+</style>
+<table class="results" cellspacing="0" cellpadding="0">
+  <tr>
+    <th>Name</th>
+    <th>Working</th>
+    <th>Submitted</th>
+    <th>Accepted</th>
+    <th>Rejected</th>
+  </tr>
+  <?php 
+    foreach ($data as $key => $value) { 
+      $total['pending'][]   = $value['pending'];
+      $total['submitted'][] = $value['submitted'];
+      $total['accepted'][]  = $value['accepted'];
+      $total['rejected'][]  = $value['rejected'];
+  ?>
+    <tr>
+      <td class="align-center"><?php echo $value['name']; ?></td>
+      <td class="align-center"><?php echo $value['pending']; ?></td>
+      <td class="align-center"><?php echo $value['submitted']; ?></td>
+      <td class="align-center"><?php echo $value['accepted']; ?></td>
+      <td class="align-center"><?php echo $value['rejected']; ?></td>
+    </tr>
+  <?php } ?>
+    <tr class="totals">
+      <td class="align-right">Totals:</td>
+      <td class="align-center"><?php $pending = array_sum($total['pending']); echo $pending; ?></td>
+      <td class="align-center"><?php $submitted = array_sum($total['submitted']); echo $submitted; ?></td>
+      <td class="align-center"><?php $accepted = array_sum($total['accepted']); echo $accepted; ?></td>
+      <td class="align-center"><?php $rejected = array_sum($total['rejected']); echo $rejected; ?></td>
+    </tr>
+    <tr class="totals"><td colspan="5" style="border-bottom: 0;"></td></tr>
+    <tr class="totals"><td colspan="5" style="border-bottom: 0; text-align: center;"><h2>Percentages</h2></td></tr>
+    <tr>
+      <th>Submitted</th>
+      <th>Pending</th>
+      <th>% Pending</th>
+      <th>Accepted</th>
+      <th>% Accepted</th>
+    </tr>
+    <?php
+    // set totals
+    $ttl_submited = $submitted + $accepted + $rejected;
+    $ttl_accepted = $accepted;
+    $ttl_rejected = $submitted + $rejected;
+    
+    // get percents
+		if($ttl_submited > 0) {
+			if($ttl_accepted > 0) {
+				$perc_accepted = $this->Number->toPercentage(($ttl_accepted/$ttl_submited)*100, 2);
+			}
+			else {
+				$perc_accepted = 0;
+			}
+			
+			if($ttl_rejected > 0) {
+				$perc_rejected = $this->Number->toPercentage(($ttl_rejected/$ttl_submited)*100, 2);
+			}
+			else {
+				$perc_rejected = 0;
+			}
+		}
+		else {
+			$perc_accepted = 0;
+			$perc_rejected = 0;
+		}
+		
+    ?>
+    <tr class="totals">
+      <td class="align-center"><?php echo $ttl_submited; ?></td>
+      <td class="align-center"><?php echo $ttl_rejected; ?></td>
+      <td class="align-center"><?php echo $perc_rejected; ?></td>
+      <td class="align-center"><?php echo $ttl_accepted; ?></td>
+      <td class="align-center"><?php echo $perc_accepted; ?></td>
+    </tr>
+    <tr>
+</table>

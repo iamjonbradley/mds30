@@ -1,0 +1,1508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.ResourceSystem.com/EIS/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.ResourceSystem.com/EIS/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This web service provides methods for retrieving and updating information in the Resource Enterprise system.  For detailed information about the methods contained in this web service, please contact Resource Systems customer support at 1-800-338-3681.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.ResourceSystem.com/EIS/">
+      <s:element name="TestMethod">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="testValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestMethodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestMethodResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EISAuthHeader" type="tns:EISAuthHeader" />
+      <s:complexType name="EISAuthHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AuthorizationCode" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="ImportDataFromDevice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsIn">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportDataFromDeviceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ImportDataFromDeviceResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateDeviceUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateDeviceUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidateDeviceUserResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExportDataToDevice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsIn">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExportDataToDeviceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExportDataToDeviceResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurgeResident">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ResidentIdentifier" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurgeResidentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PurgeResidentResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurgeResidentCensusAll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ResidentIdentifier" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurgeResidentCensusAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PurgeResidentCensusAllResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurgeResidentCensusFromDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ResidentIdentifier" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PurgeFromDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurgeResidentCensusFromDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PurgeResidentCensusFromDateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveDataByXMLStream">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncomingXMLStream" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveDataByXMLStreamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetrieveDataByXMLStreamResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveDataURL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncomingXMLStream" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveDataURLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetrieveDataURLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveDataByFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveDataByFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetrieveDataByFileResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateDataByStream">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncomingXMLStream" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileCategoryString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateDataByStreamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateDataByStreamResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateDataByXMLStream">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncomingXMLStream" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FileCategory" type="tns:FileValidateCategoryList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FileValidateCategoryList">
+        <s:restriction base="s:string">
+          <s:enumeration value="ResidentValidate" />
+          <s:enumeration value="StaffValidate" />
+          <s:enumeration value="ScheduleValidate" />
+          <s:enumeration value="CensusValidate" />
+          <s:enumeration value="ItemValidate" />
+          <s:enumeration value="InputParametersValidate" />
+          <s:enumeration value="ProtocolValidate" />
+          <s:enumeration value="ResidentDDValidate" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ValidateDataByXMLStreamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateDataByXMLStreamResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateDataByFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FileType" type="tns:FileTypeList" />
+            <s:element minOccurs="1" maxOccurs="1" name="FileCategory" type="tns:FileValidateCategoryList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FileTypeList">
+        <s:restriction base="s:string">
+          <s:enumeration value="XML" />
+          <s:enumeration value="CSV" />
+          <s:enumeration value="MDS" />
+          <s:enumeration value="HL7" />
+          <s:enumeration value="FixedWidth" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ValidateDataByFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateDataByFileResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyDataByStream">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncomingXMLStream" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyDataByStreamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModifyDataByStreamResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyDataByXMLStream">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncomingXMLStream" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FileCategory" type="tns:FileCategoryList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FileCategoryList">
+        <s:restriction base="s:string">
+          <s:enumeration value="Resident" />
+          <s:enumeration value="Staff" />
+          <s:enumeration value="Schedule" />
+          <s:enumeration value="Census" />
+          <s:enumeration value="Item" />
+          <s:enumeration value="Protocol" />
+          <s:enumeration value="ResidentDD" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ModifyDataByXMLStreamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModifyDataByXMLStreamResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyDataByFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FileType" type="tns:FileTypeList" />
+            <s:element minOccurs="1" maxOccurs="1" name="FileCategory" type="tns:FileCategoryList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyDataByFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModifyDataByFileResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TestMethodSoapIn">
+    <wsdl:part name="parameters" element="tns:TestMethod" />
+  </wsdl:message>
+  <wsdl:message name="TestMethodSoapOut">
+    <wsdl:part name="parameters" element="tns:TestMethodResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestMethodEISAuthHeader">
+    <wsdl:part name="EISAuthHeader" element="tns:EISAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="ImportDataFromDeviceSoapIn">
+    <wsdl:part name="parameters" element="tns:ImportDataFromDevice" />
+  </wsdl:message>
+  <wsdl:message name="ImportDataFromDeviceSoapOut">
+    <wsdl:part name="parameters" element="tns:ImportDataFromDeviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDeviceUserSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateDeviceUser" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDeviceUserSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateDeviceUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExportDataToDeviceSoapIn">
+    <wsdl:part name="parameters" element="tns:ExportDataToDevice" />
+  </wsdl:message>
+  <wsdl:message name="ExportDataToDeviceSoapOut">
+    <wsdl:part name="parameters" element="tns:ExportDataToDeviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentSoapIn">
+    <wsdl:part name="parameters" element="tns:PurgeResident" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentSoapOut">
+    <wsdl:part name="parameters" element="tns:PurgeResidentResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentEISAuthHeader">
+    <wsdl:part name="EISAuthHeader" element="tns:EISAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentCensusAllSoapIn">
+    <wsdl:part name="parameters" element="tns:PurgeResidentCensusAll" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentCensusAllSoapOut">
+    <wsdl:part name="parameters" element="tns:PurgeResidentCensusAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentCensusAllEISAuthHeader">
+    <wsdl:part name="EISAuthHeader" element="tns:EISAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentCensusFromDateSoapIn">
+    <wsdl:part name="parameters" element="tns:PurgeResidentCensusFromDate" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentCensusFromDateSoapOut">
+    <wsdl:part name="parameters" element="tns:PurgeResidentCensusFromDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentCensusFromDateEISAuthHeader">
+    <wsdl:part name="EISAuthHeader" element="tns:EISAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataByXMLStreamSoapIn">
+    <wsdl:part name="parameters" element="tns:RetrieveDataByXMLStream" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataByXMLStreamSoapOut">
+    <wsdl:part name="parameters" element="tns:RetrieveDataByXMLStreamResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataByXMLStreamEISAuthHeader">
+    <wsdl:part name="EISAuthHeader" element="tns:EISAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataURLSoapIn">
+    <wsdl:part name="parameters" element="tns:RetrieveDataURL" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataURLSoapOut">
+    <wsdl:part name="parameters" element="tns:RetrieveDataURLResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataURLEISAuthHeader">
+    <wsdl:part name="EISAuthHeader" element="tns:EISAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataByFileSoapIn">
+    <wsdl:part name="parameters" element="tns:RetrieveDataByFile" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataByFileSoapOut">
+    <wsdl:part name="parameters" element="tns:RetrieveDataByFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataByFileEISAuthHeader">
+    <wsdl:part name="EISAuthHeader" element="tns:EISAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByStreamSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateDataByStream" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByStreamSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateDataByStreamResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByStreamEISAuthHeader">
+    <wsdl:part name="EISAuthHeader" element="tns:EISAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByXMLStreamSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateDataByXMLStream" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByXMLStreamSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateDataByXMLStreamResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByXMLStreamEISAuthHeader">
+    <wsdl:part name="EISAuthHeader" element="tns:EISAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByFileSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateDataByFile" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByFileSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateDataByFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByFileEISAuthHeader">
+    <wsdl:part name="EISAuthHeader" element="tns:EISAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByStreamSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyDataByStream" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByStreamSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyDataByStreamResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByStreamEISAuthHeader">
+    <wsdl:part name="EISAuthHeader" element="tns:EISAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByXMLStreamSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyDataByXMLStream" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByXMLStreamSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyDataByXMLStreamResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByXMLStreamEISAuthHeader">
+    <wsdl:part name="EISAuthHeader" element="tns:EISAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByFileSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyDataByFile" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByFileSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyDataByFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByFileEISAuthHeader">
+    <wsdl:part name="EISAuthHeader" element="tns:EISAuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="TestMethodHttpGetIn">
+    <wsdl:part name="testValue" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TestMethodHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDeviceUserHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDeviceUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentHttpGetIn">
+    <wsdl:part name="ResidentIdentifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentCensusAllHttpGetIn">
+    <wsdl:part name="ResidentIdentifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentCensusAllHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentCensusFromDateHttpGetIn">
+    <wsdl:part name="ResidentIdentifier" type="s:string" />
+    <wsdl:part name="PurgeFromDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentCensusFromDateHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataByXMLStreamHttpGetIn">
+    <wsdl:part name="IncomingXMLStream" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataByXMLStreamHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataURLHttpGetIn">
+    <wsdl:part name="IncomingXMLStream" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataURLHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataByFileHttpGetIn">
+    <wsdl:part name="FileName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataByFileHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByStreamHttpGetIn">
+    <wsdl:part name="IncomingXMLStream" type="s:string" />
+    <wsdl:part name="FileCategoryString" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByStreamHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByXMLStreamHttpGetIn">
+    <wsdl:part name="IncomingXMLStream" type="s:string" />
+    <wsdl:part name="FileCategory" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByXMLStreamHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByFileHttpGetIn">
+    <wsdl:part name="FileName" type="s:string" />
+    <wsdl:part name="FileType" type="s:string" />
+    <wsdl:part name="FileCategory" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByFileHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByStreamHttpGetIn">
+    <wsdl:part name="IncomingXMLStream" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByStreamHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByXMLStreamHttpGetIn">
+    <wsdl:part name="IncomingXMLStream" type="s:string" />
+    <wsdl:part name="FileCategory" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByXMLStreamHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByFileHttpGetIn">
+    <wsdl:part name="FileName" type="s:string" />
+    <wsdl:part name="FileType" type="s:string" />
+    <wsdl:part name="FileCategory" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByFileHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="TestMethodHttpPostIn">
+    <wsdl:part name="testValue" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TestMethodHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDeviceUserHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDeviceUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentHttpPostIn">
+    <wsdl:part name="ResidentIdentifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentCensusAllHttpPostIn">
+    <wsdl:part name="ResidentIdentifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentCensusAllHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentCensusFromDateHttpPostIn">
+    <wsdl:part name="ResidentIdentifier" type="s:string" />
+    <wsdl:part name="PurgeFromDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PurgeResidentCensusFromDateHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataByXMLStreamHttpPostIn">
+    <wsdl:part name="IncomingXMLStream" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataByXMLStreamHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataURLHttpPostIn">
+    <wsdl:part name="IncomingXMLStream" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataURLHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataByFileHttpPostIn">
+    <wsdl:part name="FileName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataByFileHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByStreamHttpPostIn">
+    <wsdl:part name="IncomingXMLStream" type="s:string" />
+    <wsdl:part name="FileCategoryString" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByStreamHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByXMLStreamHttpPostIn">
+    <wsdl:part name="IncomingXMLStream" type="s:string" />
+    <wsdl:part name="FileCategory" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByXMLStreamHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByFileHttpPostIn">
+    <wsdl:part name="FileName" type="s:string" />
+    <wsdl:part name="FileType" type="s:string" />
+    <wsdl:part name="FileCategory" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateDataByFileHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByStreamHttpPostIn">
+    <wsdl:part name="IncomingXMLStream" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByStreamHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByXMLStreamHttpPostIn">
+    <wsdl:part name="IncomingXMLStream" type="s:string" />
+    <wsdl:part name="FileCategory" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByXMLStreamHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByFileHttpPostIn">
+    <wsdl:part name="FileName" type="s:string" />
+    <wsdl:part name="FileType" type="s:string" />
+    <wsdl:part name="FileCategory" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ModifyDataByFileHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:portType name="Enterprise_x0020_Interface_x0020_ServicesSoap">
+    <wsdl:operation name="TestMethod">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is here as a basic test of connectivity to the the web service.</wsdl:documentation>
+      <wsdl:input message="tns:TestMethodSoapIn" />
+      <wsdl:output message="tns:TestMethodSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportDataFromDevice">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">INTERNAL USE ONLY. This method is used to import data from handheld device related information to client.</wsdl:documentation>
+      <wsdl:input message="tns:ImportDataFromDeviceSoapIn" />
+      <wsdl:output message="tns:ImportDataFromDeviceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDeviceUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">INTERNAL USE ONLY.  This method is used to validate the user of the portable device.  The password is encrypted.</wsdl:documentation>
+      <wsdl:input message="tns:ValidateDeviceUserSoapIn" />
+      <wsdl:output message="tns:ValidateDeviceUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExportDataToDevice">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">INTERNAL USE ONLY. This method is used to send data to handheld device on client workstation.</wsdl:documentation>
+      <wsdl:input message="tns:ExportDataToDeviceSoapIn" />
+      <wsdl:output message="tns:ExportDataToDeviceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResident">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes resident from system.  This includes any existing data relating to the resident including observations, scheduling information, etc</wsdl:documentation>
+      <wsdl:input message="tns:PurgeResidentSoapIn" />
+      <wsdl:output message="tns:PurgeResidentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResidentCensusAll">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes all census information pertaining to the resident from system.</wsdl:documentation>
+      <wsdl:input message="tns:PurgeResidentCensusAllSoapIn" />
+      <wsdl:output message="tns:PurgeResidentCensusAllSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResidentCensusFromDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes census information pertaining to the resident from system greater than or equal to the date/time passed in.</wsdl:documentation>
+      <wsdl:input message="tns:PurgeResidentCensusFromDateSoapIn" />
+      <wsdl:output message="tns:PurgeResidentCensusFromDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to retrieve data from the Enterprise database using existing interface reports.  There are two interface reports available in the default installation, compressed ADL and observation detail.  Other interface reports can be setup by request.  The XML stream being passed in will be validated against the InputParameters.xsd schema file.  Data will be returned in the format specified for the requested interface report.  If errors are encountered a dataset containing error information will be returned.</wsdl:documentation>
+      <wsdl:input name="RetrieveDataByXMLStream" message="tns:RetrieveDataByXMLStreamSoapIn" />
+      <wsdl:output name="RetrieveDataByXMLStream" message="tns:RetrieveDataByXMLStreamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataURL">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to retrieve the url of the PDF file generated by the reporting system for the requested interface report.  There are two interface reports available in the default installation, compressed ADL and observation detail.  Other interface reports can be setup by request.  The XML stream being passed in will be validated against the InputParameters.xsd schema file.  If errors are encountered a url to an error page will be returned. </wsdl:documentation>
+      <wsdl:input message="tns:RetrieveDataURLSoapIn" />
+      <wsdl:output message="tns:RetrieveDataURLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataByFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to retrieve data from the Enterprise database using existing interface reports.  The file name is passed to the method.  This is the name of the file with no path information included.  The file must be transferred to a LoadFiles folder on the Enterprise web site before it can be loaded.  The file will be deleted from the loadfiles folder after processing regardless of the outcome.  The file will be validated against the InputParameters.xsd schema file.  There are two interface reports available in the default installation, compressed ADL and observation detail.  Other interface reports can be setup by request.  Data will be returned in the format specified for the requested interface report.  If errors are encountered a dataset containing the error information will be returned.</wsdl:documentation>
+      <wsdl:input message="tns:RetrieveDataByFileSoapIn" />
+      <wsdl:output message="tns:RetrieveDataByFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDataByStream">
+      <wsdl:input message="tns:ValidateDataByStreamSoapIn" />
+      <wsdl:output message="tns:ValidateDataByStreamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to validate XML streams that are used as input to the methods.  The first parameter is the actual XML stream.  The second parameter is FileCategory.  Available file categories are Resident, Census, Staff, Item, Protocol and InputParameters.  A dataset containing validation errors will be returned.</wsdl:documentation>
+      <wsdl:input name="ValidateDataByXMLStream" message="tns:ValidateDataByXMLStreamSoapIn" />
+      <wsdl:output name="ValidateDataByXMLStream" message="tns:ValidateDataByXMLStreamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDataByFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to validate files that are used as input to the methods.  The first parameter is FileName.  This is the name of the file with no path information included.  The file must be transferred to a LoadFiles folder on the Enterprise web site before it can be validated.  The file will be deleted from the loadfiles folder after processing regardless of the outcome.   The second parameter is FileType.  Available file types are XML and CSV.  The third parameter is FileCategory.  Available file categories are Resident, Census, Staff, Item, and InputParameters.  InputParameters validation does not support the CSV type.  A dataset containing validation errors will be returned.</wsdl:documentation>
+      <wsdl:input message="tns:ValidateDataByFileSoapIn" />
+      <wsdl:output message="tns:ValidateDataByFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDataByStream">
+      <wsdl:input message="tns:ModifyDataByStreamSoapIn" />
+      <wsdl:output message="tns:ModifyDataByStreamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to add, update or delete data in the Enterprise database using an XML stream.  The first parameter is the actual XML stream.  The second parameter is FileCategory.  Available file categories are Resident, Census, Staff, Item, Protocol.  A dataset containing any errors in the input data will be returned.  If no errors are encountered than an empty dataset will be returned.</wsdl:documentation>
+      <wsdl:input name="ModifyDataByXMLStream" message="tns:ModifyDataByXMLStreamSoapIn" />
+      <wsdl:output name="ModifyDataByXMLStream" message="tns:ModifyDataByXMLStreamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDataByFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to add, update or delete data in the Enterprise database using a file.  The first parameter is FileName.  This is the name of the file with no path information included.  The file must be transferred to a LoadFiles folder on the Enterprise web site before it can be loaded.  The file will be deleted from the loadfiles folder after processing regardless of the outcome.  The second parameter is FileType.  Available file types are XML and CSV.  The third parameter is FileCategory.  Available file categories are Resident, Census, Staff, and Item.  A dataset containing any errors in the input data will be returned.  If no errors are encountered than an empty dataset will be returned.</wsdl:documentation>
+      <wsdl:input message="tns:ModifyDataByFileSoapIn" />
+      <wsdl:output message="tns:ModifyDataByFileSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Enterprise_x0020_Interface_x0020_ServicesHttpGet">
+    <wsdl:operation name="TestMethod">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is here as a basic test of connectivity to the the web service.</wsdl:documentation>
+      <wsdl:input message="tns:TestMethodHttpGetIn" />
+      <wsdl:output message="tns:TestMethodHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDeviceUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">INTERNAL USE ONLY.  This method is used to validate the user of the portable device.  The password is encrypted.</wsdl:documentation>
+      <wsdl:input message="tns:ValidateDeviceUserHttpGetIn" />
+      <wsdl:output message="tns:ValidateDeviceUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResident">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes resident from system.  This includes any existing data relating to the resident including observations, scheduling information, etc</wsdl:documentation>
+      <wsdl:input message="tns:PurgeResidentHttpGetIn" />
+      <wsdl:output message="tns:PurgeResidentHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResidentCensusAll">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes all census information pertaining to the resident from system.</wsdl:documentation>
+      <wsdl:input message="tns:PurgeResidentCensusAllHttpGetIn" />
+      <wsdl:output message="tns:PurgeResidentCensusAllHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResidentCensusFromDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes census information pertaining to the resident from system greater than or equal to the date/time passed in.</wsdl:documentation>
+      <wsdl:input message="tns:PurgeResidentCensusFromDateHttpGetIn" />
+      <wsdl:output message="tns:PurgeResidentCensusFromDateHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to retrieve data from the Enterprise database using existing interface reports.  There are two interface reports available in the default installation, compressed ADL and observation detail.  Other interface reports can be setup by request.  The XML stream being passed in will be validated against the InputParameters.xsd schema file.  Data will be returned in the format specified for the requested interface report.  If errors are encountered a dataset containing error information will be returned.</wsdl:documentation>
+      <wsdl:input name="RetrieveDataByXMLStream" message="tns:RetrieveDataByXMLStreamHttpGetIn" />
+      <wsdl:output name="RetrieveDataByXMLStream" message="tns:RetrieveDataByXMLStreamHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataURL">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to retrieve the url of the PDF file generated by the reporting system for the requested interface report.  There are two interface reports available in the default installation, compressed ADL and observation detail.  Other interface reports can be setup by request.  The XML stream being passed in will be validated against the InputParameters.xsd schema file.  If errors are encountered a url to an error page will be returned. </wsdl:documentation>
+      <wsdl:input message="tns:RetrieveDataURLHttpGetIn" />
+      <wsdl:output message="tns:RetrieveDataURLHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataByFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to retrieve data from the Enterprise database using existing interface reports.  The file name is passed to the method.  This is the name of the file with no path information included.  The file must be transferred to a LoadFiles folder on the Enterprise web site before it can be loaded.  The file will be deleted from the loadfiles folder after processing regardless of the outcome.  The file will be validated against the InputParameters.xsd schema file.  There are two interface reports available in the default installation, compressed ADL and observation detail.  Other interface reports can be setup by request.  Data will be returned in the format specified for the requested interface report.  If errors are encountered a dataset containing the error information will be returned.</wsdl:documentation>
+      <wsdl:input message="tns:RetrieveDataByFileHttpGetIn" />
+      <wsdl:output message="tns:RetrieveDataByFileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDataByStream">
+      <wsdl:input message="tns:ValidateDataByStreamHttpGetIn" />
+      <wsdl:output message="tns:ValidateDataByStreamHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to validate XML streams that are used as input to the methods.  The first parameter is the actual XML stream.  The second parameter is FileCategory.  Available file categories are Resident, Census, Staff, Item, Protocol and InputParameters.  A dataset containing validation errors will be returned.</wsdl:documentation>
+      <wsdl:input name="ValidateDataByXMLStream" message="tns:ValidateDataByXMLStreamHttpGetIn" />
+      <wsdl:output name="ValidateDataByXMLStream" message="tns:ValidateDataByXMLStreamHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDataByFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to validate files that are used as input to the methods.  The first parameter is FileName.  This is the name of the file with no path information included.  The file must be transferred to a LoadFiles folder on the Enterprise web site before it can be validated.  The file will be deleted from the loadfiles folder after processing regardless of the outcome.   The second parameter is FileType.  Available file types are XML and CSV.  The third parameter is FileCategory.  Available file categories are Resident, Census, Staff, Item, and InputParameters.  InputParameters validation does not support the CSV type.  A dataset containing validation errors will be returned.</wsdl:documentation>
+      <wsdl:input message="tns:ValidateDataByFileHttpGetIn" />
+      <wsdl:output message="tns:ValidateDataByFileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDataByStream">
+      <wsdl:input message="tns:ModifyDataByStreamHttpGetIn" />
+      <wsdl:output message="tns:ModifyDataByStreamHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to add, update or delete data in the Enterprise database using an XML stream.  The first parameter is the actual XML stream.  The second parameter is FileCategory.  Available file categories are Resident, Census, Staff, Item, Protocol.  A dataset containing any errors in the input data will be returned.  If no errors are encountered than an empty dataset will be returned.</wsdl:documentation>
+      <wsdl:input name="ModifyDataByXMLStream" message="tns:ModifyDataByXMLStreamHttpGetIn" />
+      <wsdl:output name="ModifyDataByXMLStream" message="tns:ModifyDataByXMLStreamHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDataByFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to add, update or delete data in the Enterprise database using a file.  The first parameter is FileName.  This is the name of the file with no path information included.  The file must be transferred to a LoadFiles folder on the Enterprise web site before it can be loaded.  The file will be deleted from the loadfiles folder after processing regardless of the outcome.  The second parameter is FileType.  Available file types are XML and CSV.  The third parameter is FileCategory.  Available file categories are Resident, Census, Staff, and Item.  A dataset containing any errors in the input data will be returned.  If no errors are encountered than an empty dataset will be returned.</wsdl:documentation>
+      <wsdl:input message="tns:ModifyDataByFileHttpGetIn" />
+      <wsdl:output message="tns:ModifyDataByFileHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Enterprise_x0020_Interface_x0020_ServicesHttpPost">
+    <wsdl:operation name="TestMethod">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is here as a basic test of connectivity to the the web service.</wsdl:documentation>
+      <wsdl:input message="tns:TestMethodHttpPostIn" />
+      <wsdl:output message="tns:TestMethodHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDeviceUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">INTERNAL USE ONLY.  This method is used to validate the user of the portable device.  The password is encrypted.</wsdl:documentation>
+      <wsdl:input message="tns:ValidateDeviceUserHttpPostIn" />
+      <wsdl:output message="tns:ValidateDeviceUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResident">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes resident from system.  This includes any existing data relating to the resident including observations, scheduling information, etc</wsdl:documentation>
+      <wsdl:input message="tns:PurgeResidentHttpPostIn" />
+      <wsdl:output message="tns:PurgeResidentHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResidentCensusAll">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes all census information pertaining to the resident from system.</wsdl:documentation>
+      <wsdl:input message="tns:PurgeResidentCensusAllHttpPostIn" />
+      <wsdl:output message="tns:PurgeResidentCensusAllHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResidentCensusFromDate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes census information pertaining to the resident from system greater than or equal to the date/time passed in.</wsdl:documentation>
+      <wsdl:input message="tns:PurgeResidentCensusFromDateHttpPostIn" />
+      <wsdl:output message="tns:PurgeResidentCensusFromDateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to retrieve data from the Enterprise database using existing interface reports.  There are two interface reports available in the default installation, compressed ADL and observation detail.  Other interface reports can be setup by request.  The XML stream being passed in will be validated against the InputParameters.xsd schema file.  Data will be returned in the format specified for the requested interface report.  If errors are encountered a dataset containing error information will be returned.</wsdl:documentation>
+      <wsdl:input name="RetrieveDataByXMLStream" message="tns:RetrieveDataByXMLStreamHttpPostIn" />
+      <wsdl:output name="RetrieveDataByXMLStream" message="tns:RetrieveDataByXMLStreamHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataURL">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to retrieve the url of the PDF file generated by the reporting system for the requested interface report.  There are two interface reports available in the default installation, compressed ADL and observation detail.  Other interface reports can be setup by request.  The XML stream being passed in will be validated against the InputParameters.xsd schema file.  If errors are encountered a url to an error page will be returned. </wsdl:documentation>
+      <wsdl:input message="tns:RetrieveDataURLHttpPostIn" />
+      <wsdl:output message="tns:RetrieveDataURLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataByFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to retrieve data from the Enterprise database using existing interface reports.  The file name is passed to the method.  This is the name of the file with no path information included.  The file must be transferred to a LoadFiles folder on the Enterprise web site before it can be loaded.  The file will be deleted from the loadfiles folder after processing regardless of the outcome.  The file will be validated against the InputParameters.xsd schema file.  There are two interface reports available in the default installation, compressed ADL and observation detail.  Other interface reports can be setup by request.  Data will be returned in the format specified for the requested interface report.  If errors are encountered a dataset containing the error information will be returned.</wsdl:documentation>
+      <wsdl:input message="tns:RetrieveDataByFileHttpPostIn" />
+      <wsdl:output message="tns:RetrieveDataByFileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDataByStream">
+      <wsdl:input message="tns:ValidateDataByStreamHttpPostIn" />
+      <wsdl:output message="tns:ValidateDataByStreamHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to validate XML streams that are used as input to the methods.  The first parameter is the actual XML stream.  The second parameter is FileCategory.  Available file categories are Resident, Census, Staff, Item, Protocol and InputParameters.  A dataset containing validation errors will be returned.</wsdl:documentation>
+      <wsdl:input name="ValidateDataByXMLStream" message="tns:ValidateDataByXMLStreamHttpPostIn" />
+      <wsdl:output name="ValidateDataByXMLStream" message="tns:ValidateDataByXMLStreamHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDataByFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to validate files that are used as input to the methods.  The first parameter is FileName.  This is the name of the file with no path information included.  The file must be transferred to a LoadFiles folder on the Enterprise web site before it can be validated.  The file will be deleted from the loadfiles folder after processing regardless of the outcome.   The second parameter is FileType.  Available file types are XML and CSV.  The third parameter is FileCategory.  Available file categories are Resident, Census, Staff, Item, and InputParameters.  InputParameters validation does not support the CSV type.  A dataset containing validation errors will be returned.</wsdl:documentation>
+      <wsdl:input message="tns:ValidateDataByFileHttpPostIn" />
+      <wsdl:output message="tns:ValidateDataByFileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDataByStream">
+      <wsdl:input message="tns:ModifyDataByStreamHttpPostIn" />
+      <wsdl:output message="tns:ModifyDataByStreamHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to add, update or delete data in the Enterprise database using an XML stream.  The first parameter is the actual XML stream.  The second parameter is FileCategory.  Available file categories are Resident, Census, Staff, Item, Protocol.  A dataset containing any errors in the input data will be returned.  If no errors are encountered than an empty dataset will be returned.</wsdl:documentation>
+      <wsdl:input name="ModifyDataByXMLStream" message="tns:ModifyDataByXMLStreamHttpPostIn" />
+      <wsdl:output name="ModifyDataByXMLStream" message="tns:ModifyDataByXMLStreamHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDataByFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to add, update or delete data in the Enterprise database using a file.  The first parameter is FileName.  This is the name of the file with no path information included.  The file must be transferred to a LoadFiles folder on the Enterprise web site before it can be loaded.  The file will be deleted from the loadfiles folder after processing regardless of the outcome.  The second parameter is FileType.  Available file types are XML and CSV.  The third parameter is FileCategory.  Available file categories are Resident, Census, Staff, and Item.  A dataset containing any errors in the input data will be returned.  If no errors are encountered than an empty dataset will be returned.</wsdl:documentation>
+      <wsdl:input message="tns:ModifyDataByFileHttpPostIn" />
+      <wsdl:output message="tns:ModifyDataByFileHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Enterprise_x0020_Interface_x0020_ServicesSoap" type="tns:Enterprise_x0020_Interface_x0020_ServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TestMethod">
+      <soap:operation soapAction="http://www.ResourceSystem.com/EIS/TestMethod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:TestMethodEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportDataFromDevice">
+      <soap:operation soapAction="http://www.ResourceSystem.com/EIS/ImportDataFromDevice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDeviceUser">
+      <soap:operation soapAction="http://www.ResourceSystem.com/EIS/ValidateDeviceUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportDataToDevice">
+      <soap:operation soapAction="http://www.ResourceSystem.com/EIS/ExportDataToDevice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResident">
+      <soap:operation soapAction="http://www.ResourceSystem.com/EIS/PurgeResident" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:PurgeResidentEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResidentCensusAll">
+      <soap:operation soapAction="http://www.ResourceSystem.com/EIS/PurgeResidentCensusAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:PurgeResidentCensusAllEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResidentCensusFromDate">
+      <soap:operation soapAction="http://www.ResourceSystem.com/EIS/PurgeResidentCensusFromDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:PurgeResidentCensusFromDateEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveData">
+      <soap:operation soapAction="http://www.ResourceSystem.com/EIS/RetrieveDataByXMLStream" style="document" />
+      <wsdl:input name="RetrieveDataByXMLStream">
+        <soap:body use="literal" />
+        <soap:header message="tns:RetrieveDataByXMLStreamEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RetrieveDataByXMLStream">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataURL">
+      <soap:operation soapAction="http://www.ResourceSystem.com/EIS/RetrieveDataURL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RetrieveDataURLEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataByFile">
+      <soap:operation soapAction="http://www.ResourceSystem.com/EIS/RetrieveDataByFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RetrieveDataByFileEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDataByStream">
+      <soap:operation soapAction="http://www.ResourceSystem.com/EIS/ValidateDataByStream" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ValidateDataByStreamEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateData">
+      <soap:operation soapAction="http://www.ResourceSystem.com/EIS/ValidateDataByXMLStream" style="document" />
+      <wsdl:input name="ValidateDataByXMLStream">
+        <soap:body use="literal" />
+        <soap:header message="tns:ValidateDataByXMLStreamEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ValidateDataByXMLStream">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDataByFile">
+      <soap:operation soapAction="http://www.ResourceSystem.com/EIS/ValidateDataByFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ValidateDataByFileEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDataByStream">
+      <soap:operation soapAction="http://www.ResourceSystem.com/EIS/ModifyDataByStream" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ModifyDataByStreamEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyData">
+      <soap:operation soapAction="http://www.ResourceSystem.com/EIS/ModifyDataByXMLStream" style="document" />
+      <wsdl:input name="ModifyDataByXMLStream">
+        <soap:body use="literal" />
+        <soap:header message="tns:ModifyDataByXMLStreamEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ModifyDataByXMLStream">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDataByFile">
+      <soap:operation soapAction="http://www.ResourceSystem.com/EIS/ModifyDataByFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ModifyDataByFileEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Enterprise_x0020_Interface_x0020_ServicesSoap12" type="tns:Enterprise_x0020_Interface_x0020_ServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TestMethod">
+      <soap12:operation soapAction="http://www.ResourceSystem.com/EIS/TestMethod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:TestMethodEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportDataFromDevice">
+      <soap12:operation soapAction="http://www.ResourceSystem.com/EIS/ImportDataFromDevice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDeviceUser">
+      <soap12:operation soapAction="http://www.ResourceSystem.com/EIS/ValidateDeviceUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportDataToDevice">
+      <soap12:operation soapAction="http://www.ResourceSystem.com/EIS/ExportDataToDevice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResident">
+      <soap12:operation soapAction="http://www.ResourceSystem.com/EIS/PurgeResident" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:PurgeResidentEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResidentCensusAll">
+      <soap12:operation soapAction="http://www.ResourceSystem.com/EIS/PurgeResidentCensusAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:PurgeResidentCensusAllEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResidentCensusFromDate">
+      <soap12:operation soapAction="http://www.ResourceSystem.com/EIS/PurgeResidentCensusFromDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:PurgeResidentCensusFromDateEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveData">
+      <soap12:operation soapAction="http://www.ResourceSystem.com/EIS/RetrieveDataByXMLStream" style="document" />
+      <wsdl:input name="RetrieveDataByXMLStream">
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RetrieveDataByXMLStreamEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RetrieveDataByXMLStream">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataURL">
+      <soap12:operation soapAction="http://www.ResourceSystem.com/EIS/RetrieveDataURL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RetrieveDataURLEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataByFile">
+      <soap12:operation soapAction="http://www.ResourceSystem.com/EIS/RetrieveDataByFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RetrieveDataByFileEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDataByStream">
+      <soap12:operation soapAction="http://www.ResourceSystem.com/EIS/ValidateDataByStream" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ValidateDataByStreamEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateData">
+      <soap12:operation soapAction="http://www.ResourceSystem.com/EIS/ValidateDataByXMLStream" style="document" />
+      <wsdl:input name="ValidateDataByXMLStream">
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ValidateDataByXMLStreamEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ValidateDataByXMLStream">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDataByFile">
+      <soap12:operation soapAction="http://www.ResourceSystem.com/EIS/ValidateDataByFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ValidateDataByFileEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDataByStream">
+      <soap12:operation soapAction="http://www.ResourceSystem.com/EIS/ModifyDataByStream" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ModifyDataByStreamEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyData">
+      <soap12:operation soapAction="http://www.ResourceSystem.com/EIS/ModifyDataByXMLStream" style="document" />
+      <wsdl:input name="ModifyDataByXMLStream">
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ModifyDataByXMLStreamEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ModifyDataByXMLStream">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDataByFile">
+      <soap12:operation soapAction="http://www.ResourceSystem.com/EIS/ModifyDataByFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ModifyDataByFileEISAuthHeader" part="EISAuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Enterprise_x0020_Interface_x0020_ServicesHttpGet" type="tns:Enterprise_x0020_Interface_x0020_ServicesHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="TestMethod">
+      <http:operation location="/TestMethod" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDeviceUser">
+      <http:operation location="/ValidateDeviceUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResident">
+      <http:operation location="/PurgeResident" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResidentCensusAll">
+      <http:operation location="/PurgeResidentCensusAll" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResidentCensusFromDate">
+      <http:operation location="/PurgeResidentCensusFromDate" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveData">
+      <http:operation location="/RetrieveDataByXMLStream" />
+      <wsdl:input name="RetrieveDataByXMLStream">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="RetrieveDataByXMLStream">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataURL">
+      <http:operation location="/RetrieveDataURL" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataByFile">
+      <http:operation location="/RetrieveDataByFile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDataByStream">
+      <http:operation location="/ValidateDataByStream" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateData">
+      <http:operation location="/ValidateDataByXMLStream" />
+      <wsdl:input name="ValidateDataByXMLStream">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="ValidateDataByXMLStream">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDataByFile">
+      <http:operation location="/ValidateDataByFile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDataByStream">
+      <http:operation location="/ModifyDataByStream" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyData">
+      <http:operation location="/ModifyDataByXMLStream" />
+      <wsdl:input name="ModifyDataByXMLStream">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="ModifyDataByXMLStream">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDataByFile">
+      <http:operation location="/ModifyDataByFile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Enterprise_x0020_Interface_x0020_ServicesHttpPost" type="tns:Enterprise_x0020_Interface_x0020_ServicesHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="TestMethod">
+      <http:operation location="/TestMethod" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDeviceUser">
+      <http:operation location="/ValidateDeviceUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResident">
+      <http:operation location="/PurgeResident" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResidentCensusAll">
+      <http:operation location="/PurgeResidentCensusAll" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeResidentCensusFromDate">
+      <http:operation location="/PurgeResidentCensusFromDate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveData">
+      <http:operation location="/RetrieveDataByXMLStream" />
+      <wsdl:input name="RetrieveDataByXMLStream">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="RetrieveDataByXMLStream">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataURL">
+      <http:operation location="/RetrieveDataURL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataByFile">
+      <http:operation location="/RetrieveDataByFile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDataByStream">
+      <http:operation location="/ValidateDataByStream" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateData">
+      <http:operation location="/ValidateDataByXMLStream" />
+      <wsdl:input name="ValidateDataByXMLStream">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="ValidateDataByXMLStream">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateDataByFile">
+      <http:operation location="/ValidateDataByFile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDataByStream">
+      <http:operation location="/ModifyDataByStream" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyData">
+      <http:operation location="/ModifyDataByXMLStream" />
+      <wsdl:input name="ModifyDataByXMLStream">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="ModifyDataByXMLStream">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDataByFile">
+      <http:operation location="/ModifyDataByFile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Enterprise_x0020_Interface_x0020_Services">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This web service provides methods for retrieving and updating information in the Resource Enterprise system.  For detailed information about the methods contained in this web service, please contact Resource Systems customer support at 1-800-338-3681.</wsdl:documentation>
+    <wsdl:port name="Enterprise_x0020_Interface_x0020_ServicesSoap" binding="tns:Enterprise_x0020_Interface_x0020_ServicesSoap">
+      <soap:address location="http://ct9x.integration.tdpi.com/MILLENNIUMM/eis/eis.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Enterprise_x0020_Interface_x0020_ServicesSoap12" binding="tns:Enterprise_x0020_Interface_x0020_ServicesSoap12">
+      <soap12:address location="http://ct9x.integration.tdpi.com/MILLENNIUMM/eis/eis.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Enterprise_x0020_Interface_x0020_ServicesHttpGet" binding="tns:Enterprise_x0020_Interface_x0020_ServicesHttpGet">
+      <http:address location="http://ct9x.integration.tdpi.com/MILLENNIUMM/eis/eis.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Enterprise_x0020_Interface_x0020_ServicesHttpPost" binding="tns:Enterprise_x0020_Interface_x0020_ServicesHttpPost">
+      <http:address location="http://ct9x.integration.tdpi.com/MILLENNIUMM/eis/eis.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
